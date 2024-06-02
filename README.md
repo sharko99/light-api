@@ -93,14 +93,14 @@ Your API will be running on http://localhost:3000.
 
 ## Key Modules
 
-• app.js: Entry point of the application. Sets up middleware and routes.
-• db.js: Database connection and basic functions using MySQL2.
-• logger.js: Configured Winston logger for application-wide logging.
-• mailer.js: Nodemailer setup for sending emails.
-• userHandler.js: User-related operations, including registration and login.
-• authenticate.js: JWT authentication middleware.
-• htmlProcessor.js: Functions to process HTML files and strings with placeholders.
-• routes/: Directory containing route definitions.
+• app.js: Entry point of the application. Sets up middleware and routes. \
+• db.js: Database connection and basic functions using MySQL2. \
+• logger.js: Configured Winston logger for application-wide logging. \
+• mailer.js: Nodemailer setup for sending emails. \
+• userHandler.js: User-related operations, including registration and login. \
+• authenticate.js: JWT authentication middleware. \
+• htmlProcessor.js: Functions to process HTML files and strings with placeholders. \
+• routes/: Directory containing route definitions. \
 
 ## Contributing
 We welcome contributions from the community! Please fork the repository and submit a pull request.
