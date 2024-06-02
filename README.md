@@ -63,7 +63,7 @@ Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
 
 1. Start the server:
     ```sh
-        npm start
+        node app.js
     ```
 
 Your API will be running on http://localhost:3000.
