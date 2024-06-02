@@ -63,7 +63,6 @@ Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
 
 1. Start the server:
     ```sh
-        Copier le code
         npm start
     ```
 
