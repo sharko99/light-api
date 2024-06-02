@@ -1,6 +1,9 @@
 const mysql = require('mysql2/promise');
 require('dotenv').config();
 
+/**
+ * Database class to handle MySQL database operations.
+ */
 class Database {
     constructor() {
         this.pool = mysql.createPool({

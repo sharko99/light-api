@@ -3,18 +3,42 @@ const bcrypt = require('bcryptjs');
 const db = require('./db');
 require('dotenv').config();
 
+/**
+ * UserHandler class to handle user registration and login.
+ */
 class UserHandler {
     constructor() {
         this.jwtSecret = process.env.JWT_SECRET || 'your_jwt_secret';
         this.saltRounds = 10;
     }
 
+    /**
+     * Register a new user with a username and password.
+     * @param {string} username - The username of the user. It must have the 'unique' constraint in the database to avoid duplicates.
+     * @param {string} password - The password of the user.
+     * @returns {Promise<Object>} - A promise that resolves to an object containing a JWT token.
+     * @throws {Error} - If the registration fails.
+     * @example
+     * const { token } = await userHandler.registerUser('testuser', 'testpassword');
+     */
     async registerUser(username, password) {
         const hashedPassword = await bcrypt.hash(password, this.saltRounds);
         const result = await db.pool.query('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashedPassword]);
-        return result;
+        if (result.affectedRows === 0) throw new Error('Failed to register user');
+
+        const token = jwt.sign({ id: result.insertId, username }, this.jwtSecret, { expiresIn: '7d' });
+        return { token };
     }
 
+    /**
+     * Log in a user with a username and password.
+     * @param {string} username - The username of the user.
+     * @param {string} password - The password of the user.
+     * @returns {Promise<Object>} - A promise that resolves to an object containing a JWT token.
+     * @throws {Error} - If the login fails.
+     * @example
+     * const { token } = await userHandler.loginUser('testuser', 'testpassword');
+     */
     async loginUser(username, password) {
         const [rows] = await db.pool.query('SELECT * FROM users WHERE username = ?', [username]);
         if (rows.length === 0) throw new Error('User not found');
@@ -23,10 +47,18 @@ class UserHandler {
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) throw new Error('Invalid credentials');
 
-        const token = jwt.sign({ id: user.id, username: user.username }, this.jwtSecret, { expiresIn: '1h' });
+        const token = jwt.sign({ id: user.id, username: user.username }, this.jwtSecret, { expiresIn: '7d' });
         return { token };
     }
 
+    /**
+     * Verify a JWT token. Does not interact with the database to make the verification faster.
+     * @param {string} token - The JWT token to verify.
+     * @returns {Object} - The decoded token payload.
+     * @throws {Error} - If the token is invalid.
+     * @example
+     * const decoded = userHandler.verifyToken('your_jwt_token');
+     */
     verifyToken(token) {
         try {
             const decoded = jwt.verify(token, this.jwtSecret);

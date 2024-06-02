@@ -1,18 +1,32 @@
 const express = require('express');
-const app = express();
-
-// Classes import
-const db = require('./classes/db');
+const rateLimit = require('express-rate-limit');
+const cors = require('cors');
+const logger = require('./logger');
 
 // Routes import
 const userRoutes = require('./routes/users');
+const logRouter = require('./routes/log');
+const validationRouter = require('./routes/validation');
 const routes = require('./routes');
 
-// Middlewares
+// Middlewares import
 const authenticate = require('./middlewares/authenticate');
 
 // Application
-app.use(express.json());
+const app = express();
+
+// Rate limiting middleware
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // limit each IP to 100 requests per windowMs
+    message: 'Too many requests from this IP, please try again after 15 minutes'
+});
+
+// Apply rate limiting to all requests
+app.use(limiter);
+
+// Enable CORS
+app.use(cors());
 
 // Root url
 app.get('/', (req, res) => {
@@ -23,16 +37,24 @@ app.get('/', (req, res) => {
             '🔄 Routes handling',
             '🔐 User authentication with JWT',
             '💾 MySQL2 basic functions',
+            '📧 Nodemailer included',
             '🔧 Configuration with DotEnv',
+            '📝 Winston logging',
+            '📡 CORS enabled',
+            '🚫 Rate limiting',
+            '🔍 Joi validation',
             '🛡️ Middleware ready',
+            '📦 Modular structure',
             '🚀 Works out of the box!'
         ]
     });
 });
 
-// Nested routes
+// Nested routes (routes are stored in the routes folder)
 app.use('/api/users', userRoutes);
 app.use('/api', authenticate, routes); // '/api' routes are protected with the 'authenticate' middleware
+app.use('/log', logRouter);
+app.use('/validation', validationRouter);
 
 // Root routes
 // curl -X GET http://localhost:5000/welcome
@@ -43,4 +65,5 @@ app.get('/welcome', (req, res) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
+    logger.info(`Server is running on port ${PORT}`);
 });
