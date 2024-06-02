@@ -41,7 +41,7 @@ Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
 3. Copy the `.env.example` file to `.env` in the root directory and configure your environment variables:
     ```bash
         # Application settings
-        PORT=5008
+        PORT=3000
         JWT_SECRET=your_jwt_secret
 
         # MySQL2 settings
