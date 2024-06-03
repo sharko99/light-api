@@ -60,7 +60,6 @@ const functions = {
     async insertRow(table, data) {
         const keys = Object.keys(data);
         const placeholders = keys.map(() => '?').join(', ');
-        console.log(`INSERT INTO ${table} (${keys}) VALUES (${placeholders})`);
         const values = keys.map(key => data[key]);
         try {
             const [result] = await sql.query(`INSERT INTO ${table} (${keys.join(', ')}) VALUES (${placeholders})`, values);
