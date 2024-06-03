@@ -19,7 +19,7 @@ class UserHandler {
      * @returns {Promise<Object>} - A promise that resolves to an object containing a JWT token.
      * @throws {Error} - If the registration fails.
      * @example
-     * const { token } = await userHandler.registerUser('testuser', 'testpassword');
+     * const token = await userHandler.registerUser('testuser', 'testpassword');
      */
     async registerUser(username, password) {
         const hashedPassword = await bcrypt.hash(password, this.saltRounds);
@@ -27,7 +27,7 @@ class UserHandler {
         if (result.affectedRows === 0) throw new Error('Failed to register user');
 
         const token = jwt.sign({ id: result.insertId, username }, this.jwtSecret, { expiresIn: '7d' });
-        return { token };
+        return token;
     }
 
     /**
@@ -37,7 +37,7 @@ class UserHandler {
      * @returns {Promise<Object>} - A promise that resolves to an object containing a JWT token.
      * @throws {Error} - If the login fails.
      * @example
-     * const { token } = await userHandler.loginUser('testuser', 'testpassword');
+     * const token = await userHandler.loginUser('testuser', 'testpassword');
      */
     async loginUser(username, password) {
         const user = await sql.functions.getRow('users', { username: username });
@@ -47,7 +47,7 @@ class UserHandler {
         if (!isMatch) throw new Error('Invalid credentials');
 
         const token = jwt.sign({ id: user.id, username: user.username }, this.jwtSecret, { expiresIn: '7d' });
-        return { token };
+        return token;
     }
 
     /**
