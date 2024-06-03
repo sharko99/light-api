@@ -6,7 +6,7 @@ const userSchema = Joi.object({
     username: Joi.string().min(6).required(),
 });
 
-// curl -X POST http://localhost:5000/api/validation/username
+// curl -X POST http://localhost:5000/validation/username
 router.post('/username', (req, res) => {
     const { error } = userSchema.validate(req.body); // req.body structure: { username: 'john' }
     if (error) {
