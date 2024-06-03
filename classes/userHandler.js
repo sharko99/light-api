@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const db = require('./db');
+const sql = require('../db/db');
 require('dotenv').config();
 
 /**
@@ -23,7 +23,7 @@ class UserHandler {
      */
     async registerUser(username, password) {
         const hashedPassword = await bcrypt.hash(password, this.saltRounds);
-        const result = await db.pool.query('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashedPassword]);
+        const result = await sql.functions.insertRow('users', { username: username, password: hashedPassword});
         if (result.affectedRows === 0) throw new Error('Failed to register user');
 
         const token = jwt.sign({ id: result.insertId, username }, this.jwtSecret, { expiresIn: '7d' });
@@ -40,10 +40,9 @@ class UserHandler {
      * const { token } = await userHandler.loginUser('testuser', 'testpassword');
      */
     async loginUser(username, password) {
-        const [rows] = await db.pool.query('SELECT * FROM users WHERE username = ?', [username]);
-        if (rows.length === 0) throw new Error('User not found');
+        const user = await sql.functions.getRow('users', { username: username });
+        if (user.length === 0) throw new Error('User not found');
 
-        const user = rows[0];
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) throw new Error('Invalid credentials');
 
