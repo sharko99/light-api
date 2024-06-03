@@ -8,7 +8,7 @@ LightAPI comes packed with a variety of powerful features:
 
 - 🔄 **Routes handling**: Easily define and manage your API routes.
 - 🔐 **User authentication with JWT**: Secure user authentication out of the box.
-- 💾 **MySQL2 / Postgres basic functions**: Simple and efficient MySQL2 integration.
+- 💾 **MySQL2 / Postgres basic functions**: Simple and efficient MySQL2 and Postgres integration.
 - 📧 **Nodemailer included**: Send emails effortlessly with Nodemailer.
 - 🔧 **Configuration with DotEnv**: Manage environment variables with ease.
 - 📝 **Winston logging**: Robust logging for better debugging and monitoring.
