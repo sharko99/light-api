@@ -50,6 +50,8 @@ app.get('/', (req, res) => {
     });
 });
 
+// Those routes are only examples routes to inspire you or to get you started faster.
+// You are not forced to use them, and can erase all routes in order to make your own.
 // Nested routes (routes are stored in the routes folder)
 app.use('/api/users', userRoutes);
 app.use('/api', authenticate, routes); // '/api' routes are protected with the 'authenticate' middleware
