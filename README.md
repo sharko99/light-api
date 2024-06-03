@@ -65,7 +65,7 @@ For your comfort, here are two queries that you can use on your database to crea
 
 **Mysql:**
 
-```mysql
+```sql
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(255) NOT NULL UNIQUE,
@@ -77,7 +77,7 @@ CREATE TABLE users (
 
 **Postgres:**
 
-```postgres
+```sql
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     username VARCHAR(255) NOT NULL UNIQUE,
