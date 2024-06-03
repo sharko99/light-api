@@ -8,7 +8,7 @@ LightAPI comes packed with a variety of powerful features:
 
 - 🔄 **Routes handling**: Easily define and manage your API routes.
 - 🔐 **User authentication with JWT**: Secure user authentication out of the box.
-- 💾 **MySQL2 basic functions**: Simple and efficient MySQL2 integration.
+- 💾 **MySQL2 / Postgres basic functions**: Simple and efficient MySQL2 integration.
 - 📧 **Nodemailer included**: Send emails effortlessly with Nodemailer.
 - 🔧 **Configuration with DotEnv**: Manage environment variables with ease.
 - 📝 **Winston logging**: Robust logging for better debugging and monitoring.
@@ -75,10 +75,13 @@ Your API will be running on http://localhost:3000.
     ├── app.js
     ├── logger.js
     ├── classes/
-    │   ├── db.js
     │   ├── htmlProcessor.js
     │   ├── mailer.js
     │   └── userHandler.js
+    ├── db/
+    │   ├── postgres.js
+    │   ├── mysql.js
+    │   └── db.js
     ├── routes/
     │   ├── index.js
     │   ├── log.js
@@ -89,12 +92,13 @@ Your API will be running on http://localhost:3000.
     ├── node_modules/
     ├── package.json
     └── .env.example
+    └── .gitignore
 ```
 
 ## Key Modules
 
 • app.js: Entry point of the application. Sets up middleware and routes. \
-• db.js: Database connection and basic functions using MySQL2. \
+• db.js: Database connection and basic functions using MySQL2 or Postgres. \
 • logger.js: Configured Winston logger for application-wide logging. \
 • mailer.js: Nodemailer setup for sending emails. \
 • userHandler.js: User-related operations, including registration and login. \
