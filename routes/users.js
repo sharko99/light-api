@@ -13,8 +13,8 @@ const userHandler = require('../classes/userHandler');
 router.post('/register', async (req, res) => {
     try {
         const { username, password } = req.body;
-        await userHandler.registerUser(username, password);
-        res.status(201).json({ message: 'User registered successfully' });
+        const token = await userHandler.registerUser(username, password);
+        res.status(201).json({ message: 'User registered successfully', token });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -31,7 +31,7 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
     try {
         const { username, password } = req.body;
-        const { token } = await userHandler.loginUser(username, password);
+        const token = await userHandler.loginUser(username, password);
         res.json({ token });
     } catch (error) {
         res.status(401).json({ error: error.message });
