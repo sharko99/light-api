@@ -56,11 +56,19 @@ const functions = {
      * @example
      * const result = await sql.functions.insertRow('users', { name: 'John Doe',  id: 1 });
      */
+    
     async insertRow(table, data) {
-        // get keys of data
         const keys = Object.keys(data);
-        const placeholders = keys.map(() => '?').join(',');
-        const [result] = await sql.query(`INSERT INTO ${table} (${keys}) VALUES (${placeholders})`, keys.map(() => data[keys]));
+        const placeholders = keys.map(() => '?').join(', ');
+        console.log(`INSERT INTO ${table} (${keys}) VALUES (${placeholders})`);
+        const values = keys.map(key => data[key]);
+        try {
+            const [result] = await sql.query(`INSERT INTO ${table} (${keys.join(', ')}) VALUES (${placeholders})`, values);
+            return result;
+        } catch (error) {
+            console.error('Error executing query:', error);
+            return { affectedRows: 0 };
+        }
     }
 }
 
