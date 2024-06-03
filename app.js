@@ -28,6 +28,9 @@ app.use(limiter);
 // Enable CORS
 app.use(cors());
 
+// Middleware to parse JSON bodies
+app.use(express.json());
+
 // Root url
 app.get('/', (req, res) => {
     res.status(200).json({
