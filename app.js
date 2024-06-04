@@ -11,6 +11,7 @@ const routes = require('./routes');
 
 // Middlewares import
 const authenticate = require('./middlewares/authenticate');
+const disabled = require('./middlewares/disabled');
 
 // Application
 const app = express();
@@ -65,6 +66,12 @@ app.use('/validation', validationRoutes);
 // curl -X GET http://localhost:5005/welcome
 app.get('/welcome', (req, res) => {
     res.json({ message: 'Welcome' });
+});
+
+// curl -X GET http://localhost:5005/disabled
+// This route is disabled by the middleware
+app.get('/disabled', disabled, (req, res) => {
+    res.json({ message: 'This route is disabled, you cannot see this message.' });
 });
 
 const PORT = process.env.PORT || 5005;
