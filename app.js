@@ -5,8 +5,8 @@ const logger = require('./logger');
 
 // Routes import
 const userRoutes = require('./routes/users');
-const logRouter = require('./routes/log');
-const validationRouter = require('./routes/validation');
+const logRoutes = require('./routes/log');
+const validationRoutes = require('./routes/validation');
 const routes = require('./routes');
 
 // Middlewares import
@@ -39,7 +39,7 @@ app.get('/', (req, res) => {
         features: [
             '🔄 Routes handling',
             '🔐 User authentication with JWT',
-            '💾 MySQL2 basic functions',
+            '💾 MySQL2 / Postgres basic functions',
             '📧 Nodemailer included',
             '🔧 Configuration with DotEnv',
             '📝 Winston logging',
@@ -58,17 +58,17 @@ app.get('/', (req, res) => {
 // Nested routes (routes are stored in the routes folder)
 app.use('/users', userRoutes);
 app.use('/api', authenticate, routes); // '/api' routes are protected with the 'authenticate' middleware
-app.use('/log', logRouter);
-app.use('/validation', validationRouter);
+app.use('/log', logRoutes);
+app.use('/validation', validationRoutes);
 
 // Root routes
-// curl -X GET http://localhost:5000/welcome
+// curl -X GET http://localhost:5005/welcome
 app.get('/welcome', (req, res) => {
     res.json({ message: 'Welcome' });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5005;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
-    logger.info(`Server is running on port ${PORT}`);
+    // logger.info(`Server is running on port ${PORT}`); Use this line if you want to log the startup
 });

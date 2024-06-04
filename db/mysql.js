@@ -31,7 +31,7 @@ const functions = {
      */
     async getRow(table, selector) {
         const [rows] = await sql.query(`SELECT * FROM ${table} WHERE ?`, selector);
-        return rows;
+        return rows[0];
     },
 
     /**

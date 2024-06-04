@@ -3,7 +3,7 @@ const router = express.Router();
 const userHandler = require('../classes/userHandler');
 
 /*
-    curl -X POST http://localhost:3000/users/register \
+    curl -X POST http://localhost:5005/users/register \
     -H "Content-Type: application/json" \
     -d '{
         "username": "testuser",
@@ -21,7 +21,7 @@ router.post('/register', async (req, res) => {
 });
 
 /*
-    curl -X POST http://localhost:3000/users/login \
+    curl -X POST http://localhost:5005/users/login \
     -H "Content-Type: application/json" \
     -d '{
         "username": "testuser",

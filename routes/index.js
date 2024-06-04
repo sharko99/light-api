@@ -4,13 +4,19 @@ const sql = require('../db/db');
 
 // Routes in this files are protected with the authenticate middleware
 
-// curl -X GET http://localhost:5000/api/protected
+/*
+    curl -X GET http://localhost:5005/api/protected \
+    -H "Authorization: Bearer <token>"
+*/
+
 router.get('/protected', (req, res) => {
     res.json({ message: 'This is a protected route', user: req.user });
 });
 
-
-// curl -X GET http://localhost:5000/api/rows/users
+/*
+    curl -X GET http://localhost:5005/api/rows/users \
+    -H "Authorization: Bearer <token>"
+*/
 router.get('/rows/:table', async (req, res) => {
     try {
         const rows = await sql.functions.getRows(req.params.table);
@@ -20,7 +26,10 @@ router.get('/rows/:table', async (req, res) => {
     }
 });
 
-// curl -X GET "http://localhost:5000/api/row/users?id=1"
+/*
+    curl -X GET http://localhost:5005/api/row/users?id=1
+    -H "Authorization: Bearer <token>"
+*/
 router.get('/row/:table', async (req, res) => {
     try {
         const selector = req.query;
@@ -31,10 +40,11 @@ router.get('/row/:table', async (req, res) => {
     }
 });
 
-/* 
-    curl -X PUT http://localhost:5000/api/row/users \
+/*
+    curl -X PUT http://localhost:5005/api/row/users \
     -H "Content-Type: application/json" \
-    -d '{"data": {"name": "John Doe"}, "selector": {"id": 1}}'
+    -d '{"data": {"username": "John Doe"}, "selector": {"id": 1}}'
+    -H "Authorization Bearer <token>"
 */
 router.put('/row/:table', async (req, res) => {
     try {

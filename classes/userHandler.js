@@ -26,7 +26,7 @@ class UserHandler {
         const result = await sql.functions.insertRow('users', { username: username, password: hashedPassword});
         if (result.affectedRows === 0) throw new Error('Failed to register user');
 
-        const token = jwt.sign({ id: result.insertId, username }, this.jwtSecret, { expiresIn: '7d' });
+        const token = jwt.sign({ id: process.env.HIDE_USERID ? null : result.insertId, username }, this.jwtSecret, { expiresIn: '7d' });
         return token;
     }
 
@@ -46,7 +46,7 @@ class UserHandler {
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) throw new Error('Invalid credentials');
 
-        const token = jwt.sign({ id: user.id, username: user.username }, this.jwtSecret, { expiresIn: '7d' });
+        const token = jwt.sign({ id: process.env.HIDE_USERID ? null : user.id, username: user.username }, this.jwtSecret, { expiresIn: '7d' });
         return token;
     }
 

@@ -1,3 +1,5 @@
 node_modules
 combined.log
 error.log
+.env
+package-lock.json

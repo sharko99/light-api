@@ -2,6 +2,20 @@
 
 Welcome to **LightAPI**, the most modular, easy-to-use, and feature-rich Express API template! Whether you're a beginner or an experienced developer, LightAPI provides a solid foundation to kickstart your project.
 
+## Change Log
+
+### 1.0.1 - 2024-06-05 (YYYY-MM-DD)
+- Added postgreSQL support. Credits: [kush-js](https://github.com/kush-js)
+- Changed the default port to 5005
+- Added a field in the .env to hide user id from userHandler token
+- Added Authorization header in the routes comments examples
+- Protected routes and MySQL2 functions have been tested and are working
+- Still need a complete test for postgreSQL (Your PR are welcome :))
+
+### 1.0.0 - 2024-06-03 (YYYY-MM-DD)
+- Initial release
+
+
 ## Features
 
 LightAPI comes packed with a variety of powerful features:
@@ -41,7 +55,7 @@ Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
 3. Copy the `.env.example` file to `.env` in the root directory and configure your environment variables:
     ```bash
         # Application settings
-        PORT=3000
+        PORT=5005
         JWT_SECRET=your_jwt_secret
 
         # MySQL2 settings
@@ -108,7 +122,7 @@ EXECUTE FUNCTION update_updated_at_column();
         node app.js
     ```
 
-Your API will be running on http://localhost:3000.
+Your API will be running on http://localhost:5005.
 
 ## Project Structure
 
