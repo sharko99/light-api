@@ -4,7 +4,10 @@ Welcome to **LightAPI**, the most modular, easy-to-use, and feature-rich Express
 
 ## Change Log
 
-### 1.0.1 - 2024-06-05 (YYYY-MM-DD)
+### 1.0.2 - 2024-06-05 (YYYY-MM-DD)
+- Added a middleware to disable routes easily: `app.get('/register', disabled, (req, res) => {` => This route now returns a 403 error
+
+### 1.0.1 - 2024-06-04 (YYYY-MM-DD)
 - Added postgreSQL support. Credits: [kush-js](https://github.com/kush-js)
 - Changed the default port to 5005
 - Added a field in the .env to hide user id from userHandler token
@@ -31,6 +34,7 @@ LightAPI comes packed with a variety of powerful features:
 - 🔍 **Joi validation**: Validate incoming requests with Joi.
 - 🛡️ **Middleware ready**: Pre-configured middleware for common tasks.
 - 📦 **Modular structure**: Highly modular design for easy customization and extension.
+- 🔒 **Easy route disabling**: Disable routes easily with middleware.
 - 🚀 **Works out of the box!**: Get up and running quickly with minimal configuration.
 
 ## Getting Started
@@ -156,6 +160,7 @@ Your API will be running on http://localhost:5005.
     │   ├── user.js
     │   └── validation.js
     ├── middlewares/
+    │   ├── disabled.js
     │   └── authenticate.js
     ├── node_modules/
     ├── package.json
@@ -172,6 +177,7 @@ Your API will be running on http://localhost:5005.
 • userHandler.js: User-related operations, including registration and login. \
 • authenticate.js: JWT authentication middleware. \
 • htmlProcessor.js: Functions to process HTML files and strings with placeholders. \
+• disabled.js: Middleware to disable routes. \
 • routes/: Directory containing route definitions. \
 
 ## Contributing
@@ -185,4 +191,4 @@ If you have any questions, feel free to open an issue or contact us at logan+lig
 
 ## My portfolio
 
-[Logan Bunelle](https://loganbunelle.com/)
+[Logan Bunelle](https://loganbunelle.com/en)
