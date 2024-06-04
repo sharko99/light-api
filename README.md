@@ -58,11 +58,23 @@ Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
         PORT=5005
         JWT_SECRET=your_jwt_secret
 
+        # Light API settings
+        HIDE_USERID=true # Hide user id in the user token
+
+        # Database Type <mysql or postgres>
+        DBTYPE=mysql
+
         # MySQL2 settings
         DB_HOST=localhost
         DB_USER=root
         DB_PASSWORD=password
         DB_NAME=testdb
+
+        # PostGres settings
+        PGHOST=localhost
+        PGUSER=root
+        PGPASSWORD=PASSWORD
+        PGNAME=testdb
 
         # NodeMailer settings
         EMAIL_HOST=smtp.example.com
