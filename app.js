@@ -49,6 +49,7 @@ app.get('/', (req, res) => {
             '🔍 Joi validation',
             '🛡️ Middleware ready',
             '📦 Modular structure',
+            '🔒 Disabled route middleware',
             '🚀 Works out of the box!'
         ]
     });
