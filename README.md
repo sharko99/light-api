@@ -178,7 +178,7 @@ Your API will be running on http://localhost:5005.
 • authenticate.js: JWT authentication middleware. \
 • htmlProcessor.js: Functions to process HTML files and strings with placeholders. \
 • disabled.js: Middleware to disable routes. \
-• routes/: Directory containing route definitions. \
+• routes/: Directory containing route definitions. 
 
 ## Contributing
 We welcome contributions from the community! Please fork the repository and submit a pull request.
