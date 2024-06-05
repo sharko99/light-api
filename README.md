@@ -1,22 +1,22 @@
-# LightAPI - Lightweight Express Boilerplate
+# 🌟 LightAPI - Lightweight Express Boilerplate
 
 Welcome to **LightAPI**, the most modular, easy-to-use, and feature-rich Express API template! Whether you're a beginner or an experienced developer, LightAPI provides a solid foundation to kickstart your project.
 
-## Change Log
+## 📝 Change Log
 
-### 1.0.2 - 2024-06-05 (YYYY-MM-DD)
-- Added a middleware to disable routes easily: `app.get('/register', disabled, (req, res) => {` => This route now returns a 403 error
+### 🚀 1.0.2 - 2024-06-05 (YYYY-MM-DD)
+- 🔧 Added a middleware to disable routes easily: `app.get('/register', disabled, (req, res) => {` => This route now returns a 403 error
 
-### 1.0.1 - 2024-06-04 (YYYY-MM-DD)
-- Added postgreSQL support. Credits: [kush-js](https://github.com/kush-js)
-- Changed the default port to 5005
-- Added a field in the .env to hide user id from userHandler token
-- Added Authorization header in the routes comments examples
-- Protected routes and MySQL2 functions have been tested and are working
-- Still need a complete test for postgreSQL (Your PR are welcome :))
+### 🚀 1.0.1 - 2024-06-04 (YYYY-MM-DD)
+- 🐘 Added postgreSQL support. Credits: [kush-js](https://github.com/kush-js)
+- 🔄 Changed the default port to 5005
+- 🔒 Added a field in the .env to hide user id from userHandler token
+- 📜 Added Authorization header in the routes comments examples
+- ✅ Protected routes and MySQL2 functions have been tested and are working
+- 🧪 Still need a complete test for postgreSQL (Your PR are welcome :))
 
-### 1.0.0 - 2024-06-03 (YYYY-MM-DD)
-- Initial release
+### 🚀 1.0.0 - 2024-06-03 (YYYY-MM-DD)
+- 🎉 Initial release
 
 
 ## Features
