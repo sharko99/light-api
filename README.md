@@ -55,6 +55,10 @@ Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
     ```sh
         npm install
     ```
+    Or with Bun
+    ```sh
+        bun install
+    ```
 
 3. Copy the `.env.example` file to `.env` in the root directory and configure your environment variables:
     ```bash
@@ -136,6 +140,10 @@ EXECUTE FUNCTION update_updated_at_column();
 1. Start the server:
     ```sh
         node app.js
+    ```
+    with Bun:
+    ```sh
+        bun run app.js
     ```
 
 Your API will be running on http://localhost:5005.
