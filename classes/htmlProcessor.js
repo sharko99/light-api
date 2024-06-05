@@ -1,4 +1,4 @@
-const fs = require('fs').promises;
+const runtime = require('../runtime/runtime');
 
 /**
  * Replace placeholders in an HTML string with provided values.
@@ -26,7 +26,7 @@ function replaceHtmlString(html, fields) {
  * const processedHtml = await replaceHtmlFile('template.html', { username: 'John' });
  */
 async function replaceHtmlFile(filePath, fields) {
-    let html = await fs.readFile(filePath, 'utf8');
+    let html = await runtime.readFileString(filePath);
     return replaceHtmlString(html, fields);
 }
 
