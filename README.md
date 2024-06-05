@@ -183,6 +183,9 @@ Your API will be running on http://localhost:5005.
 ## Contributing
 We welcome contributions from the community! Please fork the repository and submit a pull request.
 
+- [kush-js](https://github.com/kush-js): Database engine switcher (interoperability) & Postgres integration
+- [u/MinuteScientist7254](https://www.reddit.com/user/MinuteScientist7254/): Asked the feature to hide userid from token
+
 ## License
 This project is licensed under the MIT License.
 
