@@ -4,7 +4,11 @@ Welcome to **LightAPI**, the most modular, easy-to-use, and feature-rich Express
 
 ## 📝 Change Log
 <sub>Date format: YYYY-MM-DD</sub>
-### 🚀 1.0.2 - 2024-06-05
+
+### 🚀 1.0.3 - 2024-06-05
+- 🐰 Added Bun compatibility ([kush-js](https://github.com/kush-js))
+
+### 🚀 1.0.2 - 2024-06-04
 - 🔧 Added a middleware to disable routes easily: `app.get('/register', disabled, (req, res) => {` => This route now returns a 403 error
 
 ### 🚀 1.0.1 - 2024-06-04
@@ -26,6 +30,7 @@ LightAPI comes packed with a variety of powerful features:
 - 🔄 **Routes handling**: Easily define and manage your API routes.
 - 🔐 **User authentication with JWT**: Secure user authentication out of the box.
 - 💾 **MySQL2 / Postgres basic functions**: Simple and efficient MySQL2 and Postgres integration.
+- 🐘 **PostgreSQL support**: Switch between MySQL2 and Postgres with ease.
 - 📧 **Nodemailer included**: Send emails effortlessly with Nodemailer.
 - 🔧 **Configuration with DotEnv**: Manage environment variables with ease.
 - 📝 **Winston logging**: Robust logging for better debugging and monitoring.
@@ -35,6 +40,7 @@ LightAPI comes packed with a variety of powerful features:
 - 🛡️ **Middleware ready**: Pre-configured middleware for common tasks.
 - 📦 **Modular structure**: Highly modular design for easy customization and extension.
 - 🔒 **Easy route disabling**: Disable routes easily with middleware.
+- 🐰 **Bun compatibility**: Works with Bun out of the box. Autodetects the runtime runner.
 - 🚀 **Works out of the box!**: Get up and running quickly with minimal configuration.
 
 ## Getting Started
@@ -170,9 +176,11 @@ Your API will be running on http://localhost:5005.
     ├── middlewares/
     │   ├── disabled.js
     │   └── authenticate.js
+    ├── runtime/
+    │   └── runtime.js
     ├── node_modules/
     ├── package.json
-    └── .env.example
+    ├── runtime/
     └── .gitignore
 ```
 
@@ -193,6 +201,7 @@ We welcome contributions from the community! Please fork the repository and subm
 
 - [kush-js](https://github.com/kush-js): Database engine switcher (interoperability) & Postgres integration
 - [u/MinuteScientist7254](https://www.reddit.com/user/MinuteScientist7254/): Asked the feature to hide userid from token
+- [kush-js](https://github.com/kush-js): Added Bun compatibility
 
 ## License
 This project is licensed under the MIT License.
